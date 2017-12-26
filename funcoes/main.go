@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/adrianuf22/learn_golang/funcoes_1/matematica"
+	"github.com/adrianuf22/learn_golang/funcoes/matematica"
 )
 
 func main() {
