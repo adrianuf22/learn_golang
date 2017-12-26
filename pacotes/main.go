@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	// Importing a local package from GOPATH
+	// Wrong - Importing a local package from GOPATH
 	"pacotes/prefixo"
-	// Importing a remote package from my repo
+	// Right - Importing a local package
 	"github.com/adrianuf22/learn_golang/pacotes/operadora"
 )
 
