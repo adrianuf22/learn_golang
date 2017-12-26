@@ -3,7 +3,10 @@ package main
 import (
 	"fmt"
 
+	// Importing a local package from GOPATH
 	"pacotes/prefixo"
+	// Importing a remote package from my repo
+	"github.com/adrianuf22/learn_golang/pacotes/operadora"
 )
 
 //NomeDoUsuario Nome do usuario do sistema
