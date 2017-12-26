@@ -44,5 +44,5 @@ func main() {
 
 	// Setting a property value
 	casa.Name = "Adams family's house"
-	fmt.Printf("%v\r\n", casa)
+	fmt.Printf("%+v\r\n", casa) // +v prints the value and the data structure. key:value defition of the struct
 }
