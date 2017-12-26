@@ -2,6 +2,9 @@ package main
 
 import (
 	"fmt"
+	"encoding/json"
+
+	"github.com/adrianuf22/learn_golang/structs/model"
 )
 
 //Imovel é um type que armazena dados de um imovel
@@ -45,4 +48,22 @@ func main() {
 	// Setting a property value
 	casa.Name = "Adams family's house"
 	fmt.Printf("%+v\r\n", casa) // +v prints the value and the data structure. key:value defition of the struct
+
+	// @v9 Struct methods
+	// Using a method to set value to a private property
+	carro := model.Automovel{}
+	carro.Name = "GM Camaro"
+	carro.Wheels = 5
+	carro.Potency = 3.0
+	carro.SetValue(80000)
+
+	fmt.Printf("%+v\r\n", carro)
+
+	// Using a method to get a value
+	fmt.Printf("O valor do carro é %d\r\n", carro.GetValue())
+
+	carroFromJSON, _ := json.Marshal(carro)
+
+	// Getting values from a JSON tagged struct
+	fmt.Printf("A struct Automovel transformada em JSON: %s", carroFromJSON)
 }
