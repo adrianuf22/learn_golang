@@ -14,3 +14,6 @@ var Capital int = 11
 // The current package already been imported in operadora package and now,
 // the package was imported inside a package that already has them
 // This is not allowed by Go compiler
+
+// @v5 A "private" or "not exported" variable 
+var test = "this is a private variable"
