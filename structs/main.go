@@ -62,8 +62,9 @@ func main() {
 	// Using a method to get a value
 	fmt.Printf("O valor do carro é %d\r\n", carro.GetValue())
 
+	// _ to ignore an return value
 	carroFromJSON, _ := json.Marshal(carro)
 
 	// Getting values from a JSON tagged struct
-	fmt.Printf("A struct Automovel transformada em JSON: %s", carroFromJSON)
+	fmt.Println("A struct Automovel transformada em JSON: ", string(carroFromJSON)) // Cast to string
 }
