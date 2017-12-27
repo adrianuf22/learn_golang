@@ -35,4 +35,33 @@ func main() {
 	for index, number := range listaDeNumeros {
 		fmt.Printf("Quando o index é %d o número é %d\r\n", index, number)
 	}
+
+	// @v2
+	listaDeNomes := make([]string, 5)
+	listaDeNomes[0] = "XPTO"
+	listaDeNomes[1] = "ABCF"
+	listaDeNomes[2] = "WERT"
+	listaDeNomes[3] = "TYPO"
+	listaDeNomes[4] = "AURA"
+
+	// Creating an slice of an slice
+	// variable[index starts in 0:index starts in 1] <- Rules of GO
+	var primeiroNomeDaLista = listaDeNomes[:1]
+	fmt.Println("Qual é o nome?", primeiroNomeDaLista)
+
+	var ultimoNomeDaLista = listaDeNomes[len(listaDeNomes) - 1:]
+	fmt.Println("Qual é o nome?", ultimoNomeDaLista)
+
+	var nomeDoMeioDaLista = listaDeNomes[2:3]
+	fmt.Println("Qual é o nome?", nomeDoMeioDaLista)
+
+	// Removing a item from an Slice (Hell)
+	indiceDoNomeASerRemovido := 3 // TYPO
+	tmp := listaDeNomes[:indiceDoNomeASerRemovido]
+	fmt.Println("O que sobrou?", tmp)
+	tmp = append(tmp, listaDeNomes[indiceDoNomeASerRemovido+1:]...)
+	fmt.Println("O que sobrou?", tmp)
+	copy(listaDeNomes, tmp)
+	fmt.Println("Como ficou?", listaDeNomes)
+	// Has an data error - Searching fixes
 }
