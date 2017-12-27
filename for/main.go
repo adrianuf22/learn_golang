@@ -13,7 +13,7 @@ func main() {
 	}
 	// Like as IF, variables defined to initialize 
 	// aren't available for entire scope, just inside the braces
-	fmt.Println("Qual é o valor de i agora? ", i)
+	// fmt.Println("Qual é o valor de i agora? ", i) // undefined: i
 
 	// Declaring indice variable outside For initializer
 	ix := 1
@@ -49,5 +49,13 @@ func main() {
 			break
 		}
 		fmt.Println("Qual é o valor de ix? ", ix)
+	}
+
+	// Using a range to iterate
+	word := "Using FOR in GoLang"
+	for index, letter := range word {
+		// At this format, uses %q to a double-quoted string safely escaped
+		// The value returned by range "U" or %!s(int32=85) using just %s
+		fmt.Printf("When index is %d the letter is %s\r\n", index, letter)
 	}
 }
