@@ -30,4 +30,9 @@ func main() {
 
 	// Getting the length and capacity of a Slice
 	fmt.Println(listaDeNumeros, len(listaDeNumeros), cap(listaDeNumeros))
+
+	// Using For with range to iterate an Slice
+	for index, number := range listaDeNumeros {
+		fmt.Printf("Quando o index é %d o número é %d\r\n", index, number)
+	}
 }
