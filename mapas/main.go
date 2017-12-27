@@ -65,5 +65,4 @@ func main() {
 		delete(cache, "Cache name")
 	}
 	fmt.Println("Quantos imoveis já foram registrados?", len(cache))
-
 }
