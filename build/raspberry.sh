@@ -1,0 +1,1 @@
+GOOS=linux GOARCH=arm go build -o app_rpi -v
