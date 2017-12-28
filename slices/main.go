@@ -63,5 +63,22 @@ func main() {
 	fmt.Println("O que sobrou?", tmp)
 	copy(listaDeNomes, tmp)
 	fmt.Println("Como ficou?", listaDeNomes)
-	// Has an data error - Searching fixes
+	// Has a problem here - The deleted data is replaced by the next item - Searching fixes
+
+	// From https://github.com/golang/go/wiki/SliceTricks
+	// @v2 Removing a item from an Slice
+	indiceDoNomeASerRemovido = 3
+	tmp = listaDeNomes[:indiceDoNomeASerRemovido]
+	fmt.Println("O que sobrou?", tmp)
+	listaDeNomes = append(tmp, listaDeNomes[indiceDoNomeASerRemovido+1:]...)
+	fmt.Println("Como ficou?", listaDeNomes)
+
+	// With better names
+	ixToDelete := 3
+	listaDeNomes = append(listaDeNomes[:ixToDelete], listaDeNomes[ixToDelete+1:]...)
+	fmt.Println("Como ficou?", listaDeNomes)
+
+	// Cuting items from a Slice
+	listaDeNomes = append(listaDeNomes[:1], listaDeNomes[0:])
+	fmt.Println("Como ficou?", listaDeNomes)
 }
