@@ -5,6 +5,10 @@ import (
 	"os"
 	"bufio"
 	"encoding/csv"
+	"strings"
+	"encoding/json"
+
+	"github.com/adrianuf22/learn_golang/arquivos/model"
 )
 
 func main() {
@@ -58,4 +62,44 @@ func main() {
 	// nomes.Close()
 	// @v3
 	nomesReadedAgain.Close()
+
+	// Writing files
+	// Read for trird time, so, read again
+	nomes, _ = os.Open("nomes.csv")
+	nomesCSVToCreatesJSON := csv.NewReader(nomes)
+	nomesToCreatesJSON, _ := nomesCSVToCreatesJSON.ReadAll()
+
+	// Creates a file
+	arquivoJSON, err := os.Create("nomes.json") // Any file can be create with this method
+
+	// Creates a buffer writer passing the new file to be writted
+	jsonWriter := bufio.NewWriter(arquivoJSON)
+	// Causes JSON file and an array of names, starts the JSON structure
+	jsonWriter.WriteString("[\n") // Add [ and break to next line
+	
+	// Iterate the CSV file to put data into JSON
+	for _, linha := range nomesToCreatesJSON {
+		for indiceItem, item := range linha {
+			// Nothing awesome, just split an string by delimiter
+			nomeSobrenome := strings.Split(item, ";")
+
+			nome := model.Nome{}
+			nome.Name = nomeSobrenome[0]
+			nome.Lastname =  nomeSobrenome[1]
+			nomeJSON, _ := json.Marshal(nome)
+			jsonWriter.WriteString(string(nomeJSON))
+
+			// JSON has no trailing commas support, the last must be die
+			if indiceItem != (len(linha) - 1) {
+				jsonWriter.WriteString(",")
+			}
+			// Break line
+			jsonWriter.WriteString("\r\n")
+		}
+	}
+	
+	jsonWriter.WriteString("]") // Closes the JSON Array
+	jsonWriter.Flush() // Free buffer to file, or save
+
+	arquivoJSON.Close() // And close the file
 }
