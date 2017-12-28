@@ -104,7 +104,8 @@ func ping(canal chan string) {
 func pong(canal chan string) {
 	for {
 		canal <- "pong" + time.Now().String()
-		time.Sleep(time.Second*2) // Now, after 2 seconds, a new pong was add into channel
+		time.Sleep(time.Second*1) // Now, after (1 to print + 1 to pong) 1 seconds, a new pong was add into channel
+		// ^ At the test, some prints register a different time interval - Searching for something
 	}
 }
 
