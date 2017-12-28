@@ -8,6 +8,7 @@ import (
 	"encoding/csv"
 	"encoding/json"
 	"sync"
+	"time"
 
 	"github.com/adrianuf22/learn_golang/goroutines/model"
 )
@@ -23,6 +24,18 @@ func main() {
 	go converteNomesCSVToJSON("outros-nomes")
 	// Wait for the Done sign
 	osquestrador.Wait()
+
+	// Using Channels
+	var canal chan string // Creates a channel of strings
+	canal = make(chan string) // Initialize the channel
+
+	go ping(canal)
+	go pong(canal)
+	go printPingPong(canal)
+
+	// Different of Sync orquestrador, this will help to break a goroutine when some enter key was typed during execution
+	var entrada string
+	fmt.Scanln(&entrada)
 }
 
 func converteNomesCSVToJSON(arquivoDeNomes string) {
@@ -79,4 +92,26 @@ func converteNomesCSVToJSON(arquivoDeNomes string) {
 	// Here, has no more work, so Done
 	osquestrador.Done()
 	// ^ If Done wasn't called: all goroutines are asleep - deadlock!
+}
+
+func ping(canal chan string) {
+	for {
+		canal <- "ping" + time.Now().String() // With channel, the sign <- represents the direction of data comes from to
+			// ^ If is hard to understand, is like as = in Channel
+	}
+}
+
+func pong(canal chan string) {
+	for {
+		canal <- "pong" + time.Now().String()
+		time.Sleep(time.Second*2) // Now, after 2 seconds, a new pong was add into channel
+	}
+}
+
+func printPingPong(canal chan string) {
+	for {
+		mensagem := <-canal // <- Again, but now, data comes from channel canal to variable mensagem
+		fmt.Println(mensagem)
+		time.Sleep(time.Second*1) // Wait for 1 second
+	}
 }
