@@ -1,5 +1,7 @@
 # Learning GoLang
 
+![Gopher](https://golang.org/doc/gopher/frontpage.png)
+
 ## Awesome list of resources
 - [Aprenda GO - by Geilton Xavier](https://github.com/geiltonxavier/aprenda-go)
 
