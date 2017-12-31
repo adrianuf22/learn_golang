@@ -1,6 +1,6 @@
 # Learning GoLang
 
-## Awesome list of recources
+## Awesome list of resources
 - [Aprenda GO - by Geilton Xavier](https://github.com/geiltonxavier/aprenda-go)
 
 ## Great resources to learn
